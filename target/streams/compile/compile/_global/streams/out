@@ -1,17 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/scala/Projet Scala/airportProject/src/main/scala/fileReader/Main.scala:3:8: object Point is not a member of package fileReader.model[0m
-[0m[[0m[31merror[0m] [0m[0mimport fileReader.model.Point[0m
-[0m[[0m[31merror[0m] [0m[0m       ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/scala/Projet Scala/airportProject/src/main/scala/fileReader/Main.scala:10:41: not found: value Point[0m
-[0m[[0m[31merror[0m] [0m[0mError occurred in an application involving default arguments.[0m
-[0m[[0m[31merror[0m] [0m[0m    val result = CSV.read("points.csv", Point.fromCsvLine)[0m
-[0m[[0m[31merror[0m] [0m[0m                                        ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/scala/Projet Scala/airportProject/src/main/scala/fileReader/model/country.scala:22:57: type mismatch;[0m
-[0m[[0m[31merror[0m] [0m[0m found   : String[0m
-[0m[[0m[31merror[0m] [0m[0m required: Option[String][0m
-[0m[[0m[31merror[0m] [0m[0m        => Some(Country(id, code, name, wikipedia_link, keywords))[0m
-[0m[[0m[31merror[0m] [0m[0m                                                        ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/scala/Projet Scala/airportProject/src/main/scala/fileReader/model/country.scala:24:22: not enough arguments for method apply: (id: Int, code: String, name: String, wikipedia_link: String, keywords: Option[String]): fileReader.model.Country in object Country.[0m
-[0m[[0m[31merror[0m] [0m[0mUnspecified value parameter keywords.[0m
-[0m[[0m[31merror[0m] [0m[0m      => Some(Country(id, code, name, wikipedia_link))[0m
-[0m[[0m[31merror[0m] [0m[0m                     ^[0m
-[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:12:34: not found: value keywords[0m
+[0m[[0m[31merror[0m] [0m[0m    println(result.lines.foreach(keywords))[0m
+[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

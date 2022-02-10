@@ -1,13 +1,12 @@
 package fileReader
 
-import fileReader.model.Point
 import fileReader.service.CSV
-
+import fileReader.model.Country
 
 object Main {
 
   def main(args: Array[String]): Unit = {
-    val result = CSV.read("points.csv", Point.fromCsvLine)
+    val result = CSV.read("countries.csv", Country.fromCsvLine)
     println(result.nbInvalidLine)
     result.lines.foreach(println)
   }
