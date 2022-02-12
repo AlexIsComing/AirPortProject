@@ -29,36 +29,29 @@ object Runway{
   parseRunway(line)
 }
 
-  def parseRunway: Array[String]): Option[Runway] = {
-  (Try(line(0).toInt).toOption,
-  Try(line(1)).toInt,
-  Try(line(2)).toOption,
-  Try(line(3)).toInt,
-  Try(line(4)).toInt,
-  Try(line(5)).toOption)
-  Try(line(6)).toOption)
-  Try(line(7)).toOption)
-  Try(line(8)).toOption)
-  Try(line(9)).toOption)
-  Try(line(10)).toOption)
-  Try(line(11)).toOption)
-  Try(line(12)).toOption)
-  Try(line(13)).toOption)
-  Try(line(14)).toOption)
-  Try(line(15)).toOption)
-  Try(line(16)).toOption)
-  Try(line(17)).toOption)
-  Try(line(18)).toOption)
-  Try(line(19)).toOption)
-  Try(line(20)).toOptionmatch) match {
-
-      case (Some(id), Some(code), Some(name), Some(continent), Some(wikipedia_link), Some(keywords))
-      => Some(Country(id, code, name, continent, wikipedia_link, Some(keywords)))
-      case (Some(id), Some(code), Some(name), Some(continent), Some(wikipedia_link), None)
-      => Some(Country(id, code, name, continent, wikipedia_link))
-      case _ => None
-
-    }
+  def parseRunway(line: Array[String]): Option[Runway] = {
+    Try(Some(Runway(
+      line(0).toInt,
+      line(1).toInt,
+      line(2),
+      line(3).toInt,
+      line(4).toInt,
+      line(5),
+      line(6).toInt,
+      line(7).toInt,
+      line(8),
+      Try(Some(line(9).toFloat)) getOrElse None,
+      Try(Some(line(10).toFloat)) getOrElse None,
+      Try(Some(line(11).toInt)) getOrElse None,
+      Try(Some(line(12).toFloat)) getOrElse None,
+      Try(Some(line(13).toInt)) getOrElse None,
+      Try(Some(line(14))) getOrElse None,
+      Try(Some(line(15).toFloat)) getOrElse None,
+      Try(Some(line(16).toFloat)) getOrElse None,
+      Try(Some(line(17).toInt)) getOrElse None,
+      Try(Some(line(18).toFloat)) getOrElse None,
+      Try(Some(line(18).toInt)) getOrElse None
+    ))) getOrElse None
   }
 
 }
