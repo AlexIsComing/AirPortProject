@@ -1,13 +1,11 @@
-[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:37:3: expected class or object definition[0m
-[0m[[0m[31merror[0m] [0m[0m  def subMenuQuery(): Unit ={[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:50:3: expected class or object definition[0m
-[0m[[0m[31merror[0m] [0m[0m  def mainMenu(): Unit ={[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:75:3: expected class or object definition[0m
-[0m[[0m[31merror[0m] [0m[0m  def main(args: Array[String]): Unit = {[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:78:1: Unmatched closing brace '}' ignored here[0m
-[0m[[0m[31merror[0m] [0m[0m}[0m
-[0m[[0m[31merror[0m] [0m[0m^[0m
-[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:66:24: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : fileReader.service.ReadResult[fileReader.model.Country][0m
+[0m[[0m[31merror[0m] [0m[0m required: List[fileReader.model.Country][0m
+[0m[[0m[31merror[0m] [0m[0m          subMenuQuery(countries)[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:88:14: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : List[fileReader.model.Country][0m
+[0m[[0m[31merror[0m] [0m[0m required: fileReader.service.ReadResult[fileReader.model.Country][0m
+[0m[[0m[31merror[0m] [0m[0m    mainMenu(countries)[0m
+[0m[[0m[31merror[0m] [0m[0m             ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

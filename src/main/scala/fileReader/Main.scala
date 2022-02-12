@@ -1,11 +1,14 @@
 package fileReader
 
+import fileReader.model.Country
+import fileReader.service.{CSV, ReadResult}
+
 import scala.util.{Failure, Success}
 import scala.util.Try
 
 object Main {
 
-  def subMenuReports(): Unit ={
+  def subMenuReports(countries: List[Country]): Unit ={
     println("Please Select an option")
     println("1) 10 countries with highest number of airports")
     println("2) 10 countries with lowest number of airports")
@@ -25,29 +28,35 @@ object Main {
           //code ici
         case 5 => println("Return to main menu")
         case _ =>
-          subMenuReports()
+          subMenuReports(countries)
       }
       case Failure(e) =>
-        println(e.getMessage())
-        subMenuReports()
+        println(e.getMessage)
+        subMenuReports(countries)
     }
   }
 
 
-  def subMenuQuery(): Unit ={
+  def subMenuQuery(countries: List[Country]): Unit ={
     println("Please enter a country name or code")
 
     Try(scala.io.StdIn.readLine() ) match {
-      case Success(i) => i match {
-        //code ici
-      }
+      case Success(i) =>
+        println("Country input correct : " + i)
+        Try(countries.find(line => line.name == "\""+i+"\"" || line.code == "\""+i+"\"").get) match {
+          case Success(j) => println(j)
+          case Failure(f) =>
+            println(f.getMessage)
+            subMenuQuery(countries)
+        }
       case Failure(e) =>
-        println(e.getMessage())
-        subMenuQuery()
+        println(e.getMessage)
+        subMenuQuery(countries)
+
     }
   }
 
-  def mainMenu(): Unit ={
+  def mainMenu(countries: List[Country]): Unit ={
     println("Welcome to our airport application\nPlease Select an option")
     println("1) Query")
     println("2) Reports")
@@ -57,22 +66,28 @@ object Main {
       case Success(i) => i match {
         case 1 =>
           println("query")
-          subMenuQuery()
-          mainMenu()
+          subMenuQuery(countries)
+          mainMenu(countries)
         case 2 =>
           println("Reports")
-          subMenuReports()
-        case 3 => println("Exit")
+          subMenuReports(countries)
+          mainMenu(countries)
+        case 3 =>
+          println("Exit")
         case _ =>
-          mainMenu()
+          mainMenu(countries)
       }
       case Failure(e) =>
-        println(e.getMessage())
-        mainMenu()
+        println(e.getMessage)
+        mainMenu(countries)
     }
   }
 
   def main(args: Array[String]): Unit = {
-    mainMenu()
+    val countries = CSV.read("countries.csv", Country.fromCsvLine).lines.toList
+    val airports = CSV.read("airports.csv", Country.fromCsvLine).lines.toList //à changer
+    val runways = CSV.read("runways.csv", Country.fromCsvLine).lines.toList //à changer
+
+    mainMenu(countries)
   }
 }
