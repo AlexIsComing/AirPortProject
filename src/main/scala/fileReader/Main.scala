@@ -3,6 +3,7 @@ package fileReader
 import fileReader.model.{Airport, Country, Runway}
 import fileReader.query.{displayAirportAndRunways, printCountry, queryAllCountryAirports, querySelectCountry}
 import fileReader.service.{CSV, ReadResult}
+import fileReader.reports.{TypeOfRunwayPerCountry, flop10CountriesAirport, top10CountriesAirport, top10MostCommonRunwayLatitude}
 
 import scala.util.{Failure, Success}
 import scala.util.Try
@@ -20,13 +21,28 @@ object Main {
 
       case Success(i) => i match {
         case 1 =>
-          //code ici
+          top10CountriesAirport(countries,airports)
         case 2 =>
-          //code ici
+          flop10CountriesAirport(countries, airports)
         case 3 =>
-          //code ici
+          println("Please enter a country name or code")
+          Try(querySelectCountry(scala.io.StdIn.readLine(),countries) ) match {
+            case Success(i) =>
+              if(i.isEmpty) {
+                println("No country found, please try again")
+                subMenuReports(countries, runways, airports)
+              }
+              else {
+                TypeOfRunwayPerCountry(i.get, countries, airports, runways)
+                mainMenu(countries,runways,airports)
+              }
+            case Failure(e) =>
+              println(e.getMessage)
+              subMenuReports(countries, runways, airports)
+          }
+
         case 4 =>
-          //code ici
+          top10MostCommonRunwayLatitude(runways)
         case 5 => println("Return to main menu")
         case _ =>
           subMenuReports(countries, runways, airports)
