@@ -1,4 +1,6 @@
-[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/Main.scala:12:34: not found: value keywords[0m
-[0m[[0m[31merror[0m] [0m[0m    println(result.lines.foreach(keywords))[0m
-[0m[[0m[31merror[0m] [0m[0m                                 ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/victor/IdeaProjects/AirPortProject/src/main/scala/fileReader/model/country.scala:18:69: type mismatch;[0m
+[0m[[0m[31merror[0m] [0m[0m found   : Unit[0m
+[0m[[0m[31merror[0m] [0m[0m required: Option[String][0m
+[0m[[0m[31merror[0m] [0m[0m    Some(Country(line(0).toInt, line(1), line(2), line(3), line(4), if(line(5) != "") Some(line(5)) ))[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                    ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m
