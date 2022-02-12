@@ -1,6 +1,7 @@
 package fileReader
 
 import fileReader.model.{Airport, Country, Runway}
+import fileReader.query.{displayAirportAndRunways, printCountry, queryAllCountryAirports, querySelectCountry}
 import fileReader.service.{CSV, ReadResult}
 
 import scala.util.{Failure, Success}
@@ -40,19 +41,19 @@ object Main {
   def subMenuQuery(countries: List[Country], runways: List[Runway], airports: List[Airport]): Unit ={
     println("Please enter a country name or code")
 
-    Try(scala.io.StdIn.readLine() ) match {
+    Try(querySelectCountry(scala.io.StdIn.readLine(),countries) ) match {
       case Success(i) =>
-        println("Country input correct : " + i)
-        Try(countries.find(line => line.name == "\""+i+"\"" || line.code == "\""+i+"\"").get) match {
-          case Success(j) => println(j)
-          case Failure(f) =>
-            println(f.getMessage)
-            subMenuQuery(countries, runways, airports)
+        if(i.isEmpty) {
+          println("No country found, please try again")
+          subMenuQuery(countries, runways, airports)
+        }
+        else {
+          printCountry(i.get)
+          queryAllCountryAirports(i.get, airports).foreach(displayAirportAndRunways(_,runways))
         }
       case Failure(e) =>
         println(e.getMessage)
         subMenuQuery(countries, runways, airports)
-
     }
   }
 
@@ -65,7 +66,7 @@ object Main {
 
       case Success(i) => i match {
         case 1 =>
-          println("query")
+          println("fileReader/query")
           subMenuQuery(countries, runways, airports)
           mainMenu(countries, runways, airports)
         case 2 =>
