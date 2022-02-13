@@ -1,7 +1,7 @@
 package fileReader
 
 import fileReader.model.{Airport, Country, Runway}
-import fileReader.query.{printCountry, printRunway, queryAllCountryAirports, querySelectCountry}
+import fileReader.query.{printCountry, queryAllCountryAirports}
 
 
 package object reports {
@@ -28,7 +28,7 @@ package object reports {
   def top10MostCommonRunwayLatitude(runways: List[Runway]): Unit = {
     println("10 most common runway latitude :")
     runways
-      .filter(runwayTargeted => runwayTargeted.le_ident != None) //remove none values, since le_ident is an Option
+      .filter(runwayTargeted => runwayTargeted.le_ident.nonEmpty) //remove none values, since le_ident is an Option
       .groupBy(_.le_ident) //Group all runways by their latitude
       .view
       .mapValues(_.length) //find length by runway latitude
