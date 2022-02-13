@@ -27,11 +27,11 @@ package object query {
   }
 
   def printAirport(airportSelected: Airport): Unit ={
-    println("Airport Name : " + airportSelected.name)
+    println("| Airport Name : " + airportSelected.name)
   }
 
   def printRunway(runwaySelected: Runway): Unit ={
-    println("Runway id : " + runwaySelected.id)
+    println("| | Runway id : " + runwaySelected.id)
   }
 
 }

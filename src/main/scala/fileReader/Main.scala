@@ -19,16 +19,16 @@ object Main {
     println("5) Return to main menu")
     Try(scala.io.StdIn.readInt() ) match {
 
-      case Success(i) => i match {
+      case Success(i) => i match { //check if any error
         case 1 =>
           top10CountriesAirport(countries,airports)
         case 2 =>
           flop10CountriesAirport(countries, airports)
         case 3 =>
           println("Please enter a country name or code")
-          Try(querySelectCountry(scala.io.StdIn.readLine(),countries) ) match {
-            case Success(i) =>
-              if(i.isEmpty) {
+          Try(querySelectCountry(scala.io.StdIn.readLine(),countries) ) match { //get country
+            case Success(i) => //check if any error
+              if(i.isEmpty) { //check if there is no country returned
                 println("No country found, please try again")
                 subMenuReports(countries, runways, airports)
               }
@@ -58,8 +58,8 @@ object Main {
     println("Please enter a country name or code")
 
     Try(querySelectCountry(scala.io.StdIn.readLine(),countries) ) match {
-      case Success(i) =>
-        if(i.isEmpty) {
+      case Success(i) => //check if any error
+        if(i.isEmpty) { //check if there is no country returned
           println("No country found, please try again")
           subMenuQuery(countries, runways, airports)
         }
@@ -80,7 +80,7 @@ object Main {
     println("3) Exit")
     Try(scala.io.StdIn.readInt() ) match {
 
-      case Success(i) => i match {
+      case Success(i) => i match { //check if any error
         case 1 =>
           println("fileReader/query")
           subMenuQuery(countries, runways, airports)
@@ -106,9 +106,7 @@ object Main {
     val countries = CSV.read("countries.csv", Country.fromCsvLine)
     val airports = CSV.read("airports.csv", Airport.fromCsvLine)
     val runways = CSV.read("runways.csv", Runway.fromCsvLine)
-    println(countries.nbInvalidLine)
-    println(airports.nbInvalidLine)
-    println(runways.nbInvalidLine)
+
     mainMenu(countries.lines.toList, runways.lines.toList, airports.lines.toList)
   }
 }

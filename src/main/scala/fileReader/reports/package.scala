@@ -57,7 +57,7 @@ package object reports {
     println("Types of runways (it may take some time to display) :")
     runways.filter(runwayTargeted =>
       queryAllCountryAirports(countrySelected,airports)
-          .exists(airportTargeted => airportTargeted.ident.toLowerCase == runwayTargeted.airport_ident.toLowerCase) ) //check if a runway exist in any airport of the selected country
+          .exists(airportTargeted => airportTargeted.ident == runwayTargeted.airport_ident) ) //check if a runway exist in any airport of the selected country
       .groupBy(_.surface)
       .keys
       .foreach(println)
