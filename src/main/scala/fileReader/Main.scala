@@ -5,11 +5,13 @@ import fileReader.query.{displayAirportAndRunways, printCountry, queryAllCountry
 import fileReader.service.{CSV, ReadResult}
 import fileReader.reports.{TypeOfRunwayNational, flop10CountriesAirport, top10CountriesAirport, top10MostCommonRunwayLatitude}
 
+import scala.annotation.tailrec
 import scala.util.{Failure, Success}
 import scala.util.Try
 
 object Main {
 
+  @tailrec
   def subMenuReports(countries: List[Country], runways: List[Runway], airports: List[Airport]): Unit ={
     println("Please Select an option")
     println("1) 10 countries with highest number of airports")
@@ -53,7 +55,7 @@ object Main {
     }
   }
 
-
+  @tailrec
   def subMenuQuery(countries: List[Country], runways: List[Runway], airports: List[Airport]): Unit ={
     println("Please enter a country name or code")
 
@@ -73,6 +75,7 @@ object Main {
     }
   }
 
+  @tailrec
   def mainMenu(countries: List[Country], runways: List[Runway], airports: List[Airport]): Unit ={
     println("Welcome to our airport application\nPlease Select an option")
     println("1) Query")
