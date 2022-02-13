@@ -3,7 +3,7 @@ package fileReader
 import fileReader.model.{Airport, Country, Runway}
 import fileReader.query.{displayAirportAndRunways, printCountry, queryAllCountryAirports, querySelectCountry}
 import fileReader.service.{CSV, ReadResult}
-import fileReader.reports.{TypeOfRunwayPerCountry, flop10CountriesAirport, top10CountriesAirport, top10MostCommonRunwayLatitude}
+import fileReader.reports.{TypeOfRunwayNational, flop10CountriesAirport, top10CountriesAirport, top10MostCommonRunwayLatitude}
 
 import scala.util.{Failure, Success}
 import scala.util.Try
@@ -33,7 +33,7 @@ object Main {
                 subMenuReports(countries, runways, airports)
               }
               else {
-                TypeOfRunwayPerCountry(i.get, countries, airports, runways)
+                TypeOfRunwayNational(i.get, airports, runways)
                 mainMenu(countries,runways,airports)
               }
             case Failure(e) =>
@@ -102,10 +102,13 @@ object Main {
 
   def main(args: Array[String]): Unit = {
 
+    //reading the csv
     val countries = CSV.read("countries.csv", Country.fromCsvLine)
     val airports = CSV.read("airports.csv", Airport.fromCsvLine)
     val runways = CSV.read("runways.csv", Runway.fromCsvLine)
-
+    println(countries.nbInvalidLine)
+    println(airports.nbInvalidLine)
+    println(runways.nbInvalidLine)
     mainMenu(countries.lines.toList, runways.lines.toList, airports.lines.toList)
   }
 }
